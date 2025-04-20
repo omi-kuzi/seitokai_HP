@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #c70000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #c70000;
+    color: white;
+}
+
+#news-list, #materials-container, #members-container {
+    padding: 20px;
+}
+
+.material-box {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.member-card {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.member-card img {
+    width: 100%;
+    height: auto;
+}
+
+.member-details {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #c70000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #900000;
+}
