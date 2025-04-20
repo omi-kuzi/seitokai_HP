@@ -1,1 +1,49 @@
+/* 基本的なレイアウト設定 */
+body {
+  font-family: 'Noto Serif JP', serif;
+  background-color: #fff8f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #a60000;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+  background: #fff0f0;
+  padding: 1rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #a60000;
+  font-weight: bold;
+}
+
+/* それぞれのカードのスタイル */
+.news-card, .report-card {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.news-card a, .report-card a {
+  color: #a60000;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #a60000;
+  color: white;
+}
 
