@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>浜松聖星高等学校 生徒会</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #b30000;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    nav {
+      background-color: #e60000;
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      padding: 1em;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2em;
+      text-align: center;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      margin-top: 2em;
+    }
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5em;
+      width: 250px;
+    }
+    footer {
+      background-color: #b30000;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>浜松聖星高等学校 生徒会</h1>
+  </header>
+
+  <nav>
+    <a href="news-blog.html">ニュース・ブログ</a>
+    <a href="calendar.html">今後の予定</a>
+    <a href="materials.html">資料</a>
+    <a href="members.html">メンバー紹介</a>
+  </nav>
+
+  <main>
+    <h2>ようこそ、生徒会ホームページへ！</h2>
+    <p>こちらでは、活動報告・今後の予定・資料・メンバー紹介などを掲載しています。</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>ニュース・ブログ</h3>
+        <p>最新の生徒会活動や学校ニュースを紹介します。</p>
+        <a href="news-blog.html">もっと見る</a>
+      </div>
+      <div class="card">
+        <h3>今後の予定</h3>
+        <p>行事や会議などの予定をカレンダー形式で確認できます。</p>
+        <a href="calendar.html">カレンダーを見る</a>
+      </div>
+      <div class="card">
+        <h3>資料室</h3>
+        <p>文化祭・体育祭などの資料を掲載しています。</p>
+        <a href="materials.html">資料を見る</a>
+      </div>
+      <div class="card">
+        <h3>メンバー紹介</h3>
+        <p>生徒会のメンバーをカード形式で紹介しています。</p>
+        <a href="members.html">メンバーを見る</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 浜松聖星高等学校 生徒会</p>
+  </footer>
+</body>
+</html>
