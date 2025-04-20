@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンバー紹介</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>メンバー紹介</h1>
+    </header>
+    <div id="members-container">
+        <div class="member-card">
+            <img src="member1.jpg" alt="メンバー1">
+            <h3>メンバー1</h3>
+            <button onclick="showDetails('member1')">詳細</button>
+            <div id="member1-details" class="member-details" style="display:none;">
+                <p>役職: 会長</p>
+                <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
+            </div>
+        </div>
+        <div class="member-card">
+            <img src="member2.jpg" alt="メンバー2">
+            <h3>メンバー2</h3>
+            <button onclick="showDetails('member2')">詳細</button>
+            <div id="member2-details" class="member-details" style="display:none;">
+                <p>役職: 副会長</p>
+                <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 浜松聖星高等学校 生徒会</p>
+    </footer>
+    <script>
+        function showDetails(memberId) {
+            const details = document.getElementById(memberId + '-details');
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
