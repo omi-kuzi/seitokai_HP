@@ -1,107 +1,67 @@
-// 現在の年月を保持
+const calendarEl = document.getElementById("calendar");
+const monthLabel = document.getElementById("monthLabel");
+const prevBtn = document.getElementById("prevMonth");
+const nextBtn = document.getElementById("nextMonth");
+
 let currentDate = new Date();
-let events = {
-  "2025-05-07": {
-    title: "委員会",
-    details: "５月委員会"
-  },
-  "2025-05-14": {
-    title: "中間試験",
-    details: "中間試験(1/3)"
-  },
-  "2025-05-15": {
-    title: "中間試験",
-    details: "中間試験(2/3)"
-  },
-  "2025-05-16": {
-    title: "中間試験",
-    details: "中間試験(3/3)"
-  },
-  "2025-06-06": {
-    title: "文化祭",
-    details: "ベリタスプラザ"
-  },
-  "2025-06-07": {
-    title: "ベリタスプラザ",
-    details: "ベリタスプラザ一般公開"
-  },
-  "2025-06-25": {
-    title: "委員会",
-    details: "委員会の詳細情報"
-  },
-  "2025-07-01": {
-    title: "期末試験",
-    details: "期末試験の詳細情報"
-  }
+
+const events = {
+  "2025-05-07": "委員会",
+  "2025-05-14": "中間試験",
+  "2025-05-15": "中間試験",
+  "2025-05-16": "中間試験",
+  "2025-06-06": "文化祭",
+  "2025-06-07": "文化祭",
+  "2025-06-25": "委員会",
+  "2025-07-01": "期末試験",
+  "2025-07-02": "期末試験",
+  "2025-07-03": "期末試験",
+  "2025-07-04": "期末試験"
 };
 
-// 月のカレンダーを描画
-function renderCalendar() {
-  const calendarElement = document.getElementById('calendar');
-  const monthLabel = document.getElementById('monthLabel');
+function renderCalendar(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
 
-  // 現在表示している月を取得
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+  monthLabel.textContent = `${year}年${month + 1}月`;
 
-  // 月のラベルを表示
-  monthLabel.textContent = `${year}年 ${month + 1}月`;
+  let html = "<table><thead><tr>";
+  const weekDays = ["日", "月", "火", "水", "木", "金", "土"];
+  weekDays.forEach(d => html += `<th>${d}</th>`);
+  html += "</tr></thead><tbody><tr>";
 
-  // 月の初日と最終日を取得
-  const firstDay = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0);
-  const daysInMonth = lastDay.getDate();
-  
-  // カレンダーをリセット
-  calendarElement.innerHTML = '';
-
-  // 月初日の曜日を取得
-  const firstDayOfWeek = firstDay.getDay();
-
-  // 最初の空白を挿入（前月からの余白）
-  for (let i = 0; i < firstDayOfWeek; i++) {
-    const emptyCell = document.createElement('div');
-    emptyCell.classList.add('day');
-    calendarElement.appendChild(emptyCell);
+  for (let i = 0; i < firstDay; i++) {
+    html += "<td></td>";
   }
 
-  // 月の日数分、日付を追加
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dayElement = document.createElement('div');
-    dayElement.classList.add('day');
-    dayElement.textContent = day;
-    const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    dayElement.dataset.date = dateString;
+  for (let day = 1; day <= lastDate; day++) {
+    const fullDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const isEvent = events[fullDate];
+    const cellClass = isEvent ? "event" : "";
 
-    // イベントがある日付は強調
-    if (events[dateString]) {
-      dayElement.style.backgroundColor = '#ffcccb';
+    html += `<td class="${cellClass}">${day}`;
+    if (isEvent) {
+      html += `<div class="event-label">${events[fullDate]}</div>`;
     }
+    html += "</td>";
 
-    dayElement.addEventListener('click', showEventDetails);
-    calendarElement.appendChild(dayElement);
+    if ((firstDay + day) % 7 === 0) html += "</tr><tr>";
   }
+
+  html += "</tr></tbody></table>";
+  calendarEl.innerHTML = html;
 }
 
-// イベント詳細を表示
-function showEventDetails(event) {
-  const date = event.target.dataset.date;
-  if (events[date]) {
-    alert(`${events[date].title}\n\n${events[date].details}`);
-  }
-}
-
-// 前月に移動
-document.getElementById('prevMonth').addEventListener('click', () => {
+prevBtn.onclick = () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-});
+  renderCalendar(currentDate);
+};
 
-// 次月に移動
-document.getElementById('nextMonth').addEventListener('click', () => {
+nextBtn.onclick = () => {
   currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-});
+  renderCalendar(currentDate);
+};
 
-// 初期表示
-renderCalendar();
+renderCalendar(currentDate);
