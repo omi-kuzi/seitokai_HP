@@ -1,11 +1,21 @@
 /* メンバー紹介カードのスタイル */
+#members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 .member-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
     border-radius: 10px;
     text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
 }
 
 .member-card img {
@@ -43,7 +53,7 @@
     border-radius: 5px;
 }
 
-/* ホームに戻るボタンのスタイル（真ん中に配置） */
+/* ホームに戻るボタンのスタイル（最下部中央に配置） */
 .home-button {
     background-color: #d40000;
     color: white;
@@ -57,9 +67,9 @@
     text-align: center;
     transition: background-color 0.3s ease;
     position: fixed;
-    top: 50%;
+    bottom: 30px; /* 最下部から30px */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 }
 
 .home-button:hover {
