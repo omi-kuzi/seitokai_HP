@@ -1,61 +1,98 @@
+/* 基本レイアウト */
 body {
-  font-family: "Helvetica Neue", sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f9f9f9;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
 }
 
 header {
   background-color: #d40000;
   color: white;
+  padding: 1em;
   text-align: center;
-  padding: 1rem;
 }
 
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+/* カード全体のコンテナ */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
 }
 
+/* カード個別 */
 .news-card {
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #d40000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
   max-width: 300px;
   width: 100%;
-  padding: 1rem;
   transition: transform 0.2s;
 }
 
 .news-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .news-card h3 {
-  margin: 0 0 0.5rem 0;
+  margin-top: 0;
+  font-size: 1.2em;
   color: #d40000;
 }
 
 .news-card p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  font-size: 0.95em;
+  line-height: 1.4;
 }
 
+/* ホームに戻るボタン */
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.back-button {
+  background-color: #d40000;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #a80000;
+}
+
+/* フッター */
 footer {
   background-color: #d40000;
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.8em;
+  font-size: 0.9em;
 }
 
-/* スマホ対応 */
+/* レスポンシブ対応 */
 @media (max-width: 600px) {
   .card-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .news-card {
+    max-width: 90%;
   }
 }
