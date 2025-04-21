@@ -2,28 +2,22 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>今後の予定</title>
   <link rel="stylesheet" href="calendar.css" />
 </head>
 <body>
-  <header>
+  <header style="background-color: #d40000; color: white; text-align: center; padding: 1em;">
     <h1>今後の予定</h1>
   </header>
 
-  <main>
-    <div id="calendar-container"></div>
-    <div id="event-list"></div>
+  <main style="padding: 1em;">
+    <div id="calendar"></div>
   </main>
 
-  <footer>
-    <p>© 浜松聖星高等学校 生徒会</p>
+  <footer style="background-color: #d40000; color: white; text-align: center; padding: 0.5em;">
+    © 浜松聖星高等学校 生徒会
   </footer>
 
-  <script>
-    const targetYear = 2025;
-    const targetMonth = 5; // 5月を表示
-  </script>
   <script src="calendar.js"></script>
 </body>
 </html>
