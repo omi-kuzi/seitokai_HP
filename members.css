@@ -8,14 +8,14 @@
 }
 
 .member-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #fff;
+    border: 2px solid #d40000; /* 赤い枠線を復活 */
     padding: 20px;
-    margin: 10px;
     border-radius: 10px;
     text-align: center;
     width: 250px;
     transition: transform 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .member-card img {
@@ -53,26 +53,22 @@
     border-radius: 5px;
 }
 
-/* ホームに戻るボタンのスタイル（最下部中央に配置） */
-.home-button {
+/* ホームに戻るボタン（カレンダーページと同じ位置） */
+.return-home {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 20px auto;
+    padding: 12px 24px;
     background-color: #d40000;
     color: white;
-    font-size: 1.2em;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease;
-    position: fixed;
-    bottom: 30px; /* 最下部から30px */
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-.home-button:hover {
+.return-home:hover {
     background-color: #a00000;
 }
 
