@@ -1,32 +1,124 @@
-.calendar {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
+/* calendar.css */
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
 }
 
-.calendar th, .calendar td {
-  border: 1px solid #aaa;
-  padding: 8px;
+.day {
+  padding: 10px;
+  background-color: #f4f4f4;
   text-align: center;
-  vertical-align: top;
-  height: 80px;
+  cursor: pointer;
 }
 
-.calendar th {
+.day:hover {
+  background-color: #e0e0e0;
+}
+
+#prevMonth, #nextMonth {
+  padding: 5px 10px;
   background-color: #d40000;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.calendar td.event {
-  background-color: #ffeaea;
-  font-weight: bold;
-  position: relative;
+#prevMonth:hover, #nextMonth:hover {
+  background-color: #a30000;
+}
+/* calendar.css */
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
 }
 
-.calendar td.event ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.2em 0 0;
-  font-size: 0.75em;
-  color: #d40000;
+.day {
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #e0e0e0;
+}
+
+#prevMonth, #nextMonth {
+  padding: 5px 10px;
+  background-color: #d40000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#prevMonth:hover, #nextMonth:hover {
+  background-color: #a30000;
+}
+/* calendar.css */
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.day {
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #e0e0e0;
+}
+
+#prevMonth, #nextMonth {
+  padding: 5px 10px;
+  background-color: #d40000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#prevMonth:hover, #nextMonth:hover {
+  background-color: #a30000;
+}
+/* calendar.css */
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.day {
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #e0e0e0;
+}
+
+#prevMonth, #nextMonth {
+  padding: 5px 10px;
+  background-color: #d40000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#prevMonth:hover, #nextMonth:hover {
+  background-color: #a30000;
 }
