@@ -23,3 +23,17 @@ th, td {
   color: #d40000;
   margin-top: 4px;
 }
+
+.home-button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: #d40000;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.home-button:hover {
+  background-color: #a00000;
+}
