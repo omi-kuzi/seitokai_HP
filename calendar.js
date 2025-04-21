@@ -1,66 +1,80 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const calendarContainer = document.getElementById("calendar");
-  const events = [
-    { date: "2024-05-07", title: "委員会" },
-    { date: "2024-05-14", title: "中間試験" },
-    { date: "2024-05-15", title: "中間試験" },
-    { date: "2024-05-16", title: "中間試験" },
-    { date: "2024-06-06", title: "ベリタスプラザ" },
-    { date: "2024-06-07", title: "ベリタスプラザ" },
-    { date: "2024-06-25", title: "委員会" },
-    { date: "2024-07-01", title: "期末試験" },
-    { date: "2024-07-02", title: "期末試験" },
-    { date: "2024-07-03", title: "期末試験" },
-    { date: "2024-07-04", title: "期末試験" },
-  ];
+// 現在の年月を保持
+let currentDate = new Date();
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth(); // 0-11
-  const date = new Date(year, month, 1);
-  const firstDay = date.getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+// イベントデータ（例）
+const events = {
+  '2025-05-07': { title: '委員会', details: '定例の委員会があります。場所: 会議室A' },
+  '2025-05-14': { title: '中間試験', details: '中間試験が始まります。' },
+  '2025-06-06': { title: '文化祭', details: '文化祭の準備が始まります。' },
+};
 
-  const table = document.createElement("table");
-  table.className = "calendar";
+// 月のカレンダーを描画
+function renderCalendar() {
+  const calendarElement = document.getElementById('calendar');
+  const monthLabel = document.getElementById('monthLabel');
 
-  const headerRow = document.createElement("tr");
-  ["日", "月", "火", "水", "木", "金", "土"].forEach((day) => {
-    const th = document.createElement("th");
-    th.textContent = day;
-    headerRow.appendChild(th);
-  });
-  table.appendChild(headerRow);
+  // 現在表示している月を取得
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
 
-  let row = document.createElement("tr");
-  for (let i = 0; i < firstDay; i++) {
-    row.appendChild(document.createElement("td"));
+  // 月のラベルを表示
+  monthLabel.textContent = `${year}年 ${month + 1}月`;
+
+  // 月の初日と最終日を取得
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const daysInMonth = lastDay.getDate();
+  
+  // カレンダーをリセット
+  calendarElement.innerHTML = '';
+
+  // 月初日の曜日を取得
+  const firstDayOfWeek = firstDay.getDay();
+
+  // 最初の空白を挿入（前月からの余白）
+  for (let i = 0; i < firstDayOfWeek; i++) {
+    const emptyCell = document.createElement('div');
+    emptyCell.classList.add('day');
+    calendarElement.appendChild(emptyCell);
   }
 
-  for (let d = 1; d <= daysInMonth; d++) {
-    if ((firstDay + d - 1) % 7 === 0 && d !== 1) {
-      table.appendChild(row);
-      row = document.createElement("tr");
+  // 月の日数分、日付を追加
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayElement = document.createElement('div');
+    dayElement.classList.add('day');
+    dayElement.textContent = day;
+    const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    dayElement.dataset.date = dateString;
+
+    // イベントがある日付は強調
+    if (events[dateString]) {
+      dayElement.style.backgroundColor = '#ffcccb';
     }
 
-    const cell = document.createElement("td");
-    cell.textContent = d;
-
-    const fullDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-    const matchingEvents = events.filter((event) => event.date === fullDate);
-    if (matchingEvents.length > 0) {
-      cell.classList.add("event");
-      const eventList = document.createElement("ul");
-      matchingEvents.forEach((event) => {
-        const li = document.createElement("li");
-        li.textContent = event.title;
-        eventList.appendChild(li);
-      });
-      cell.appendChild(eventList);
-    }
-
-    row.appendChild(cell);
+    dayElement.addEventListener('click', showEventDetails);
+    calendarElement.appendChild(dayElement);
   }
-  table.appendChild(row);
-  calendarContainer.appendChild(table);
+}
+
+// イベント詳細を表示
+function showEventDetails(event) {
+  const date = event.target.dataset.date;
+  if (events[date]) {
+    alert(`${events[date].title}\n\n${events[date].details}`);
+  }
+}
+
+// 前月に移動
+document.getElementById('prevMonth').addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() - 1);
+  renderCalendar();
 });
+
+// 次月に移動
+document.getElementById('nextMonth').addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  renderCalendar();
+});
+
+// 初期表示
+renderCalendar();
