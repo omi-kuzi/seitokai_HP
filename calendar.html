@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>今後の予定</title>
 
-  <!-- 共通スタイル -->
+  <!-- 共通CSS -->
   <link rel="stylesheet" href="css/common.css" />
 
-  <!-- カレンダー専用スタイル -->
+  <!-- カレンダー用CSS -->
   <link rel="stylesheet" href="css/calendar.css" />
 </head>
 <body>
@@ -16,15 +16,14 @@
   </header>
 
   <main style="padding: 1em;">
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-bottom: 10px;">
       <button id="prevMonth">＜ 前月</button>
-      <span id="monthLabel"></span>
+      <span id="monthLabel" style="font-weight: bold; margin: 0 1em;"></span>
       <button id="nextMonth">次月 ＞</button>
     </div>
 
     <div id="calendar"></div>
 
-    <!-- ホームに戻るボタン（共通スタイル使用） -->
     <div class="home-button-container">
       <a href="index.html" class="home-button">⬅ ホームに戻る</a>
     </div>
