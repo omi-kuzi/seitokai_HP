@@ -1,12 +1,17 @@
 // 現在の年月を保持
 let currentDate = new Date();
+let events = {};  // イベントデータを格納する変数
 
-// イベントデータ（例）
-const events = {
-  '2025-05-07': { title: '委員会', details: '定例の委員会があります。場所: 会議室A' },
-  '2025-05-14': { title: '中間試験', details: '中間試験が始まります。' },
-  '2025-06-06': { title: '文化祭', details: '文化祭の準備が始まります。' },
-};
+// JSONファイルからイベントデータを読み込む
+fetch('events.json')
+  .then(response => response.json())
+  .then(data => {
+    events = data;  // 読み込んだデータをイベントデータに格納
+    renderCalendar();  // イベントデータを読み込んだ後にカレンダーを描画
+  })
+  .catch(error => {
+    console.error('イベントデータの読み込みに失敗しました:', error);
+  });
 
 // 月のカレンダーを描画
 function renderCalendar() {
