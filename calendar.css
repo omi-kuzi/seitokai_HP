@@ -37,6 +37,7 @@ footer {
   padding: 10px;
   text-align: center;
   background-color: #f4f4f4;
+  border: 1px solid #ddd; /* 枠線を追加 */
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
