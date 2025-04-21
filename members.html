@@ -9,8 +9,6 @@
 <body>
     <header>
         <h1>メンバー紹介</h1>
-        <!-- ホームに戻るボタン -->
-        <a href="index.html" class="home-button">ホームに戻る</a>
     </header>
     
     <div id="members-container">
@@ -34,7 +32,6 @@
             </div>
         </div>
 
-        <!-- 追加メンバーの例 -->
         <div class="member-card">
             <img src="member3.jpg" alt="メンバー3">
             <h3>メンバー3</h3>
@@ -57,11 +54,11 @@
     </div>
 
     <footer>
+        <a href="index.html" class="home-button">ホームに戻る</a>
         <p>&copy; 浜松聖星高等学校 生徒会</p>
     </footer>
 
     <script>
-        // メンバー詳細表示のための関数
         function showDetails(memberId) {
             const details = document.getElementById(memberId + '-details');
             if (details.style.display === "none") {
