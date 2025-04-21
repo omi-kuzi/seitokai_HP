@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メンバー紹介</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="members.css">
 </head>
 <body>
     <header>
         <h1>メンバー紹介</h1>
     </header>
+    
     <div id="members-container">
         <div class="member-card">
             <img src="member1.jpg" alt="メンバー1">
@@ -20,6 +21,7 @@
                 <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
             </div>
         </div>
+
         <div class="member-card">
             <img src="member2.jpg" alt="メンバー2">
             <h3>メンバー2</h3>
@@ -29,11 +31,35 @@
                 <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
             </div>
         </div>
+
+        <!-- 追加メンバーの例 -->
+        <div class="member-card">
+            <img src="member3.jpg" alt="メンバー3">
+            <h3>メンバー3</h3>
+            <button onclick="showDetails('member3')">詳細</button>
+            <div id="member3-details" class="member-details" style="display:none;">
+                <p>役職: 書記</p>
+                <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="member4.jpg" alt="メンバー4">
+            <h3>メンバー4</h3>
+            <button onclick="showDetails('member4')">詳細</button>
+            <div id="member4-details" class="member-details" style="display:none;">
+                <p>役職: 会計</p>
+                <p>プロフィール: こちらに詳細なプロフィールが入ります。</p>
+            </div>
+        </div>
     </div>
+
     <footer>
         <p>&copy; 浜松聖星高等学校 生徒会</p>
     </footer>
+
     <script>
+        // メンバー詳細表示のための関数
         function showDetails(memberId) {
             const details = document.getElementById(memberId + '-details');
             if (details.style.display === "none") {
