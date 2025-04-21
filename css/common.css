@@ -1,0 +1,26 @@
+/* --- 共通ボタン：ホームに戻る --- */
+.home-button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(145deg, #d40000, #ff4b4b);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #d40000, 0 0 20px #ff4b4b inset;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.home-button:hover {
+  background: linear-gradient(145deg, #ff6666, #ff1a1a);
+  box-shadow: 0 0 15px #ff3333, 0 0 30px #ff6666 inset;
+  transform: translateY(-2px);
+}
