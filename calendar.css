@@ -1,43 +1,32 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  background-color: #fff;
-}
-
-header, footer {
-  background-color: #c00;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
-
-main {
-  padding: 1rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-table {
+.calendar {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin: 1em 0;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  width: 14.2%;
-  height: 4rem;
+.calendar th, .calendar td {
+  border: 1px solid #aaa;
+  padding: 8px;
   text-align: center;
   vertical-align: top;
-  padding: 0.5rem;
+  height: 80px;
 }
 
-.has-event {
-  background-color: #ffdddd;
+.calendar th {
+  background-color: #d40000;
+  color: white;
+}
+
+.calendar td.event {
+  background-color: #ffeaea;
   font-weight: bold;
-  cursor: pointer;
+  position: relative;
 }
 
-#event-list {
-  margin-top: 2rem;
+.calendar td.event ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.2em 0 0;
+  font-size: 0.75em;
+  color: #d40000;
 }
