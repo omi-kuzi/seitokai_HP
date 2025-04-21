@@ -1,57 +1,66 @@
-const calendarContainer = document.getElementById("calendar-container");
-const eventList = document.getElementById("event-list");
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarContainer = document.getElementById("calendar");
+  const events = [
+    { date: "2024-05-07", title: "委員会" },
+    { date: "2024-05-14", title: "中間試験" },
+    { date: "2024-05-15", title: "中間試験" },
+    { date: "2024-05-16", title: "中間試験" },
+    { date: "2024-06-06", title: "ベリタスプラザ" },
+    { date: "2024-06-07", title: "ベリタスプラザ" },
+    { date: "2024-06-25", title: "委員会" },
+    { date: "2024-07-01", title: "期末試験" },
+    { date: "2024-07-02", title: "期末試験" },
+    { date: "2024-07-03", title: "期末試験" },
+    { date: "2024-07-04", title: "期末試験" },
+  ];
 
-fetch("events.json")
-  .then(res => res.json())
-  .then(events => drawCalendar(events))
-  .catch(err => console.error("イベントの読み込みに失敗しました:", err));
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0-11
+  const date = new Date(year, month, 1);
+  const firstDay = date.getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-function drawCalendar(events) {
-  const firstDay = new Date(targetYear, targetMonth - 1, 1);
-  const lastDay = new Date(targetYear, targetMonth, 0);
-  const daysInMonth = lastDay.getDate();
+  const table = document.createElement("table");
+  table.className = "calendar";
 
-  let html = `<table><thead><tr>
-    <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
-  </tr></thead><tbody><tr>`;
-
-  let weekday = firstDay.getDay();
-
-  // 空白埋め
-  for (let i = 0; i < weekday; i++) {
-    html += "<td></td>";
-  }
-
-  for (let date = 1; date <= daysInMonth; date++) {
-    const currentDate = `${targetYear}-${String(targetMonth).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-    const dayEvents = events.filter(e => e.date === currentDate);
-    const tdClass = dayEvents.length > 0 ? "has-event" : "";
-
-    html += `<td class="${tdClass}" data-date="${currentDate}">${date}</td>`;
-
-    weekday++;
-    if (weekday % 7 === 0 && date !== daysInMonth) {
-      html += "</tr><tr>"; // 行を閉じて次の週へ
-    }
-  }
-
-  // 残りの空白セル
-  if (weekday % 7 !== 0) {
-    const remaining = 7 - (weekday % 7);
-    for (let i = 0; i < remaining; i++) {
-      html += "<td></td>";
-    }
-  }
-
-  html += "</tr></tbody></table>";
-  calendarContainer.innerHTML = html;
-
-  document.querySelectorAll(".has-event").forEach(td => {
-    td.addEventListener("click", () => {
-      const selectedDate = td.dataset.date;
-      const dayEvents = events.filter(e => e.date === selectedDate);
-      eventList.innerHTML = `<h2>${selectedDate} の予定</h2><ul>` +
-        dayEvents.map(e => `<li>${e.title}</li>`).join("") + "</ul>";
-    });
+  const headerRow = document.createElement("tr");
+  ["日", "月", "火", "水", "木", "金", "土"].forEach((day) => {
+    const th = document.createElement("th");
+    th.textContent = day;
+    headerRow.appendChild(th);
   });
-}
+  table.appendChild(headerRow);
+
+  let row = document.createElement("tr");
+  for (let i = 0; i < firstDay; i++) {
+    row.appendChild(document.createElement("td"));
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    if ((firstDay + d - 1) % 7 === 0 && d !== 1) {
+      table.appendChild(row);
+      row = document.createElement("tr");
+    }
+
+    const cell = document.createElement("td");
+    cell.textContent = d;
+
+    const fullDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const matchingEvents = events.filter((event) => event.date === fullDate);
+    if (matchingEvents.length > 0) {
+      cell.classList.add("event");
+      const eventList = document.createElement("ul");
+      matchingEvents.forEach((event) => {
+        const li = document.createElement("li");
+        li.textContent = event.title;
+        eventList.appendChild(li);
+      });
+      cell.appendChild(eventList);
+    }
+
+    row.appendChild(cell);
+  }
+  table.appendChild(row);
+  calendarContainer.appendChild(table);
+});
