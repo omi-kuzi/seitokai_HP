@@ -3,7 +3,7 @@ let currentDate = new Date();
 let events = {};  // イベントデータを格納する変数
 
 // JSONファイルからイベントデータを読み込む
-fetch('events.json')
+fetch('events.json?' + new Date().getTime())  // クエリパラメータでキャッシュを無視
   .then(response => response.json())
   .then(data => {
     events = data;  // 読み込んだデータをイベントデータに格納
