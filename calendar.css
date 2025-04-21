@@ -1,31 +1,113 @@
-/* calendar.css */
+/* カレンダーの基本スタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
 
+header {
+  background-color: #d40000;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+footer {
+  background-color: #d40000;
+  color: white;
+  text-align: center;
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* カレンダー本体 */
 #calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  margin-top: 20px;
+  grid-template-columns: repeat(7, 1fr); /* 1週間7日を均等に配置 */
+  grid-gap: 5px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
+/* 日付セルの基本スタイル */
 .day {
   padding: 10px;
-  background-color: #f4f4f4;
   text-align: center;
+  background-color: #f4f4f4;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+/* ホバー時に日付セルの色が変わる */
 .day:hover {
   background-color: #e0e0e0;
 }
 
-#prevMonth, #nextMonth {
-  padding: 5px 10px;
+/* イベントのある日付を強調 */
+.day[data-event="true"] {
+  background-color: #ffcccb;
+}
+
+/* イベント詳細表示のポップアップ */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.close-btn {
   background-color: #d40000;
   color: white;
   border: none;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-#prevMonth:hover, #nextMonth:hover {
+.close-btn:hover {
   background-color: #a30000;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  #calendar {
+    grid-template-columns: repeat(7, 1fr); /* 1週間を均等に配置 */
+  }
+
+  .day {
+    font-size: 0.9em; /* スマホではフォントを少し小さく */
+    padding: 8px;
+  }
+
+  #calendar {
+    grid-gap: 3px; /* セル間の間隔を調整 */
+  }
+}
+
+@media (max-width: 480px) {
+  #calendar {
+    grid-template-columns: repeat(7, 1fr); /* スマホでも1週間が表示できるように */
+  }
+
+  .day {
+    font-size: 0.8em; /* より小さなフォントサイズ */
+    padding: 6px;
+  }
 }
