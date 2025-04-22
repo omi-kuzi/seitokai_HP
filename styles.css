@@ -1,26 +1,23 @@
-/* 共通設定 */
+/* ボディ全体のスタイル */
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: sans-serif;
   background-color: #f9f9f9;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
-/* ヘッダー */
+/* ヘッダーのスタイル */
 header {
   background-color: #b30000;
   color: white;
-  padding: 1.5em 1em;
+  padding: 1em;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* ナビゲーションバー */
+/* ナビゲーションのスタイル */
 nav {
   background-color: #e60000;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 1em;
   padding: 1em;
@@ -30,16 +27,19 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 0.5em 1em;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-  background-color: #cc0000;
+  text-decoration: underline;
 }
 
-/* ヒーロースライドショー */
+/* メインコンテンツ */
+main {
+  padding: 2em;
+  text-align: center;
+}
+
+/* ヒーロースライド（スライドショー）のスタイル */
 .hero {
   position: relative;
   width: 100%;
@@ -51,22 +51,23 @@ nav a:hover {
   width: 100%;
   height: auto;
   display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* 最初は右側に配置 */
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: left 1s ease-in-out; /* スライドインのアニメーション */
 }
 
 .hero img.active {
   display: block;
-  opacity: 1;
+  left: 0; /* 現在の画像が表示される位置 */
 }
 
-/* メイン */
-main {
-  padding: 2em 1em;
-  text-align: center;
+.hero img.prev {
+  left: -100%; /* 前のスライドは左にスライドアウト */
 }
 
+/* カードのスタイル */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -81,43 +82,15 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 1.5em;
   width: 250px;
-  text-align: left;
-  transition: transform 0.2s ease-in-out;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card a {
-  display: inline-block;
-  margin-top: 1em;
-  color: #b30000;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.card a:hover {
-  text-decoration: underline;
-}
-
-/* フッター */
+/* フッターのスタイル */
 footer {
   background-color: #b30000;
   color: white;
   text-align: center;
   padding: 1em;
+  position: fixed;
   width: 100%;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
+  bottom: 0;
 }
