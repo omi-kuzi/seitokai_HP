@@ -32,6 +32,32 @@
     nav a:hover {
       text-decoration: underline;
     }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .fade {
+      animation: fadeEffect 1.5s;
+    }
+    @keyframes fadeEffect {
+      from {opacity: 0.3;}
+      to {opacity: 1;}
+    }
+
     main {
       padding: 2em;
       text-align: center;
@@ -65,6 +91,15 @@
   <header>
     <h1>浜松聖星高等学校 生徒会</h1>
   </header>
+
+  <div class="slideshow-container">
+    <div class="slide fade"><img src="images/1745244751875.jpg" alt="スライド1"></div>
+    <div class="slide fade"><img src="images/1745244751946.jpg" alt="スライド2"></div>
+    <div class="slide fade"><img src="images/1745244756591.jpg" alt="スライド3"></div>
+    <div class="slide fade"><img src="images/1745244736083.jpg" alt="スライド4"></div>
+    <div class="slide fade"><img src="images/1745244736120.jpg" alt="スライド5"></div>
+    <div class="slide fade"><img src="images/1745244735970.jpg" alt="スライド6"></div>
+  </div>
 
   <nav>
     <a href="news-blog.html">ニュース・ブログ</a>
@@ -104,5 +139,20 @@
   <footer>
     <p>&copy; 2025 浜松聖星高等学校 生徒会</p>
   </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 4000); // 4秒ごとに切り替え
+    }
+  </script>
 </body>
 </html>
