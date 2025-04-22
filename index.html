@@ -2,105 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>浜松聖星高等学校 生徒会</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #b30000;
-      color: white;
-      padding: 1em;
-      text-align: center;
-    }
-    nav {
-      background-color: #e60000;
-      display: flex;
-      justify-content: center;
-      gap: 1em;
-      padding: 1em;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .fade {
-      animation: fadeEffect 1.5s;
-    }
-    @keyframes fadeEffect {
-      from {opacity: 0.3;}
-      to {opacity: 1;}
-    }
-
-    main {
-      padding: 2em;
-      text-align: center;
-    }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em;
-      margin-top: 2em;
-    }
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 1.5em;
-      width: 250px;
-    }
-    footer {
-      background-color: #b30000;
-      color: white;
-      text-align: center;
-      padding: 1em;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-  </style>
 </head>
 <body>
+  <!-- ヘッダー -->
   <header>
     <h1>浜松聖星高等学校 生徒会</h1>
   </header>
 
-  <div class="slideshow-container">
-    <div class="slide fade"><img src="images/1745244751875.jpg" alt="スライド1"></div>
-    <div class="slide fade"><img src="images/1745244751946.jpg" alt="スライド2"></div>
-    <div class="slide fade"><img src="images/1745244756591.jpg" alt="スライド3"></div>
-    <div class="slide fade"><img src="images/1745244736083.jpg" alt="スライド4"></div>
-    <div class="slide fade"><img src="images/1745244736120.jpg" alt="スライド5"></div>
-    <div class="slide fade"><img src="images/1745244735970.jpg" alt="スライド6"></div>
-  </div>
-
+  <!-- ナビゲーション -->
   <nav>
     <a href="news-blog.html">ニュース・ブログ</a>
     <a href="calendar.html">今後の予定</a>
@@ -108,6 +20,17 @@
     <a href="members.html">メンバー紹介</a>
   </nav>
 
+  <!-- ヒーロースライドショー -->
+  <div class="hero">
+    <img src="images/1745244751875.jpg" alt="スライド1" class="active">
+    <img src="images/1745244751946.jpg" alt="スライド2">
+    <img src="images/1745244756591.jpg" alt="スライド3">
+    <img src="images/1745244736083.jpg" alt="スライド4">
+    <img src="images/1745244736120.jpg" alt="スライド5">
+    <img src="images/1745244735970.jpg" alt="スライド6">
+  </div>
+
+  <!-- メインコンテンツ -->
   <main>
     <h2>ようこそ、生徒会ホームページへ！</h2>
     <p>こちらでは、活動報告・今後の予定・資料・メンバー紹介などを掲載しています。</p>
@@ -136,23 +59,23 @@
     </div>
   </main>
 
+  <!-- フッター -->
   <footer>
     <p>&copy; 2025 浜松聖星高等学校 生徒会</p>
   </footer>
 
   <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      const slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 4000); // 4秒ごとに切り替え
+    // スライドショーのJavaScript
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.hero img');
+    
+    function changeSlide() {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
     }
+    
+    setInterval(changeSlide, 3000);  // 3秒ごとにスライドが切り替わる
   </script>
 </body>
 </html>
