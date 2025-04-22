@@ -1,15 +1,19 @@
 let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    if (i === index) {
+      slide.classList.add('active');
+    }
+  });
+}
 
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % totalSlides;
-  updateSlider();
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
 }
 
-function updateSlider() {
-  const offset = -currentIndex * 100;
-  document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
-}
-
-setInterval(nextSlide, 3000); // 3秒ごとにスライドを切り替え
+setInterval(nextSlide, 4000);
+showSlide(currentIndex);
