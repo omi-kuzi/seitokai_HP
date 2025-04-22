@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <!-- ヘッダー -->
   <header>
     <h1>浜松聖星高等学校 生徒会</h1>
@@ -20,21 +21,22 @@
     <a href="members.html">メンバー紹介</a>
   </nav>
 
-  <!-- ヒーロースライドショー -->
-  <div class="hero">
-    <img src="images/1745244751875.jpg" alt="スライド1" class="active">
-    <img src="images/1745244751946.jpg" alt="スライド2">
-    <img src="images/1745244756591.jpg" alt="スライド3">
-    <img src="images/1745244736083.jpg" alt="スライド4">
-    <img src="images/1745244736120.jpg" alt="スライド5">
-    <img src="images/1745244735970.jpg" alt="スライド6">
-  </div>
-
   <!-- メインコンテンツ -->
   <main>
     <h2>ようこそ、生徒会ホームページへ！</h2>
     <p>こちらでは、活動報告・今後の予定・資料・メンバー紹介などを掲載しています。</p>
 
+    <!-- ヒーロースライド -->
+    <div class="hero">
+      <img src="images/1745244751875.jpg" alt="スライド1" class="active">
+      <img src="images/1745244751946.jpg" alt="スライド2">
+      <img src="images/1745244756591.jpg" alt="スライド3">
+      <img src="images/1745244736083.jpg" alt="スライド4">
+      <img src="images/1745244736120.jpg" alt="スライド5">
+      <img src="images/1745244735970.jpg" alt="スライド6">
+    </div>
+
+    <!-- カード -->
     <div class="card-container">
       <div class="card">
         <h3>ニュース・ブログ</h3>
@@ -64,18 +66,6 @@
     <p>&copy; 2025 浜松聖星高等学校 生徒会</p>
   </footer>
 
-  <script>
-    // スライドショーのJavaScript
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.hero img');
-    
-    function changeSlide() {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add('active');
-    }
-    
-    setInterval(changeSlide, 3000);  // 3秒ごとにスライドが切り替わる
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
