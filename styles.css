@@ -30,6 +30,25 @@ nav a:hover {
   text-decoration: underline;
 }
 
+.slider-container {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  width: calc(100vw * 6); /* スライド数 */
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 main {
   padding: 2em;
   text-align: center;
@@ -46,7 +65,7 @@ main {
 .card {
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 1.5em;
   width: 250px;
 }
@@ -56,26 +75,4 @@ footer {
   color: white;
   text-align: center;
   padding: 1em;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-.slider-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.slider {
-  display: flex;
-  transition: transform 1s ease-in-out;
-}
-
-.slide {
-  width: 100%;
-  height: auto;
-  display: block;
 }
