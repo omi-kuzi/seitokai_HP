@@ -1,18 +1,15 @@
 let currentIndex = 0;
-const slides = document.querySelectorAll('.hero img');
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
 
-function changeSlide() {
-  const currentSlide = slides[currentIndex];
-  const nextIndex = (currentIndex + 1) % slides.length;
-  const nextSlide = slides[nextIndex];
-
-  currentSlide.classList.remove('active');
-  nextSlide.classList.add('active');
-
-  currentSlide.classList.add('prev');
-  nextSlide.classList.remove('prev');
-
-  currentIndex = nextIndex;
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 }
 
-setInterval(changeSlide, 3000);  // 3秒ごとにスライドを切り替え
+function updateSlider() {
+  const offset = -currentIndex * 100;
+  document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
+}
+
+setInterval(nextSlide, 3000); // 3秒ごとにスライドを切り替え
