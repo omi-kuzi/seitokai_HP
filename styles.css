@@ -52,11 +52,13 @@ nav a:hover {
   height: auto;
   display: none;
   object-fit: cover;
+  opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
 .hero img.active {
   display: block;
+  opacity: 1;
 }
 
 /* メイン */
