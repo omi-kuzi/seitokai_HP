@@ -4,6 +4,27 @@
   <meta charset="UTF-8">
   <title>浜松聖星高等学校 生徒会</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 簡易CSS：必要に応じてstyle.cssへ移動 */
+    .today-photo {
+      text-align: center;
+      padding: 2em;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      margin: 3em auto;
+      max-width: 800px;
+    }
+    .today-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+    .today-photo a:hover img {
+      transform: scale(1.03);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -55,10 +76,42 @@
     </div>
   </main>
 
+  <!-- 今日の1枚セクション -->
+  <section id="random-photo" class="today-photo">
+    <h2>今日の1枚</h2>
+    <a id="galleryLink" href="gallery.html">
+      <img id="randomImage" src="" alt="ランダム写真">
+    </a>
+    <p id="photoCaption"></p>
+  </section>
+
   <footer>
     <p>&copy; 2025 浜松聖星高等学校 生徒会</p>
   </footer>
 
-  <script src="slider.js"></script>
+  <!-- ランダム画像表示のスクリプト -->
+  <script>
+    const photos = [
+      { src: "images/photo1.jpg", caption: "体育祭の開会式" },
+      { src: "images/photo2.jpg", caption: "ベリタスの準備風景" },
+      { src: "images/photo3.jpg", caption: "始業式での代表挨拶" },
+      { src: "images/photo4.jpg", caption: "クラス展示の装飾中" },
+      { src: "images/photo5.jpg", caption: "地域清掃ボランティア" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const randomIndex = Math.floor(Math.random() * photos.length);
+      const selectedPhoto = photos[randomIndex];
+
+      const img = document.getElementById("randomImage");
+      const caption = document.getElementById("photoCaption");
+      const link = document.getElementById("galleryLink");
+
+      img.src = selectedPhoto.src;
+      img.alt = selectedPhoto.caption;
+      caption.textContent = selectedPhoto.caption;
+      link.href = "gallery.html"; // ギャラリーへのリンク先
+    });
+  </script>
 </body>
 </html>
